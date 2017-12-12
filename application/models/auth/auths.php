@@ -8,7 +8,7 @@ class Auths extends CI_Model {
 	}
 	
 	function login($userId,$paswd){
-		$where = "(username = '".$userId."' or  email='".$userId."') and passwd='".$paswd."'";
+		$where = "(username = '".$userId."' or  email='".$userId."') and passwd='".md5($paswd)."'";
 		$res  = $this->commonModel->getRecord('users','*',$where,'','','','array',0);
 		if($res){
 			return $res;

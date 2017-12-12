@@ -53,15 +53,15 @@ class Utilities {
 	
 	public function validateSession() {
 		if ($this->isAuth()) {
-			if($_SERVER['REQUEST_URI']=='/auth/signin'){
-				redirect('dashboard');
-			}else if($_SERVER['REQUEST_URI']=='/auth/signup'){
-				redirect('dashboard');
-			}else if($_SERVER['REQUEST_URI']=='/auth/signupauth'){
-				redirect('dashboard');
+			if($_SERVER['REQUEST_URI']=='/index'){
+				redirect('/home');
+			}else if($_SERVER['REQUEST_URI']=='/home'){
+				//redirect('/');
+			}/* else if($_SERVER['REQUEST_URI']=='/auth/signupauth'){
+				redirect('/');
 			}else if($_SERVER['REQUEST_URI']=='/auth/signinauth'){
 				redirect('dashboard');
-			}
+			} */
         } else {
 			$this->destroySession();
 		}
