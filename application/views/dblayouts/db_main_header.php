@@ -12,23 +12,17 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li id="topdashboard" class="active">
-				<?php if( $this->utilities->getUserType() == 'admin'){ ?>
-					<a href="<?php echo base_url('dashboard/admin');?>">
+				<a href="#">
 						<span class="glyphicon glyphicon-dashboard"></span> Dashboard
 					</a>
-				<?php }else{?>
-				<a href="<?php echo base_url('dashboard');?>">
-						<span class="glyphicon glyphicon-dashboard"></span> Dashboard
-					</a>
-				<?php }?>
 				</li>
-							<li id="topabout">
-					<a href="<?php echo base_url('index/about');?>">
+				<li id="topabout">
+					<a href="#">
 						About Us
 					</a>
 				</li>
 				<li id="topcontact">
-					<a href="<?php echo base_url('index/contact');?>">
+					<a href="#">
 						Contact Us
 					</a>
 				</li>
@@ -83,21 +77,15 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
 								<li id="intopdashboard" class="active">
-									<?php if( $this->utilities->getUserType() == 'admin'){ ?>
-									<a href="<?php echo base_url('dashboard/admin');?>">
+									<a href="#">
 										<span class="glyphicon glyphicon-dashboard"></span> Dashboard
 									</a>
-									<?php }else{?>
-									<a href="<?php echo base_url('dashboard');?>">
-										<span class="glyphicon glyphicon-dashboard"></span> Dashboard
-									</a>
-								<?php }?>
 								</li>
 								<li id="intopabout">
-									<a href="<?php echo base_url('index/about');?>">About Us</a>
+									<a href="#">About Us</a>
 								</li>
 								<li id="intopcontact">
-									<a href="<?php echo base_url('index/contact');?>">Contact Us</a>
+									<a href="#">Contact Us</a>
 								</li>
 							</ul>
 						</div>
