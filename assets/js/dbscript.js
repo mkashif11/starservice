@@ -1,9 +1,26 @@
-
-$(document).ready(function(){
-	$(".alert").addClass("in").fadeOut(4500);
-/* swap open/close side menu icons */
-	$('[data-toggle=collapse]').click(function(){
-		// toggle icon
-		$(this).find("i").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
+$( document ).ready(function(){
+	
+	$("#addNewSer").click(function(){
+		$.ajax({
+			type: "POST",
+			url: base_url+'home/openaddservice',
+			data: {},
+			success: function(msg){
+				$("html body").append(msg);
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				setUiMessege('err',errorThrown);
+			}
+		});
 	});
+	
 });
+
+
+
+
+
+
+
+
+

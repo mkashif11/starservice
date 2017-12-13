@@ -16,4 +16,8 @@ class Home extends CI_Controller {
 		//$this->layouts->add_include('assets/js/main.js')->add_include('assets/css/coustom.css')->add_include('https://www.google.com/recaptcha/api.js',false);
 		$this->layouts->dbview('home/main_page');
 	}
+	
+	public function openaddservice(){
+		echo $this->load->view('home/addpopup', "",true);
+	}
 }

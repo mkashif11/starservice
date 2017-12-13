@@ -22,6 +22,7 @@ $( document ).ready(function(){
 			setUiMessege('err',"Please enter user and password");
 		}
 	});
+	
 });
 
 
