@@ -29,7 +29,43 @@ class Api extends REST_Controller {
 		}else{
 			$this->response(array("status"=>"error","msg"=>"Please enter correct user and password"),403);
 		}
-		
-		
 	}
+	
+	public function service_put() {
+		$putArr = Array();
+		$putArr['name'] = $this->put('name');
+		$putArr['contact'] = $this->put('contact');
+		$putArr['service_date'] = $this->utilities->convertDateFormatForDbase($this->put('sdate'));
+		$putArr['address'] = $this->put('address');
+		$putArr['added_by'] = $this->utilities->getSessionUserData('uid');
+		$putArr['date_modified'] = date("Y-m-d H:i:s");
+		
+		$up_res = $this->commonModel->insertRecord('services',$putArr);
+		if($up_res){
+			$this->response(array("status"=>"success","msg"=>"Service recorded successfully.","data"=>$up_res),200);
+		}else{
+			$this->response(array("status"=>"error","msg"=>"Service not recorded.","data"=>""),200);
+		}
+	}
+	
+	public function updateservice_post() {
+		$postArr = Array();
+		//echo $this->post('sdate');die;
+		$postArr['name'] = $this->post('name');
+		$postArr['contact'] = $this->post('contact');
+		$postArr['service_date'] = $this->utilities->convertDateFormatForDbase($this->post('sdate'));
+		$postArr['address'] = $this->post('address');
+		$postArr['updated_by'] = $this->utilities->getSessionUserData('uid');
+		$postArr['date_modified'] = date("Y-m-d H:i:s");
+		
+		$up_res = $this->commonModel->updateRecord('services',$postArr,array("id"=>$this->post('id')));
+		if($up_res){
+			$this->response(array("status"=>"success","msg"=>"Service record update successfully.","data"=>$up_res),200);
+		}else{
+			$this->response(array("status"=>"error","msg"=>"Service not updated.","data"=>""),200);
+		}
+	}
+	
+	
+	
 }

@@ -218,7 +218,7 @@ class Utilities {
 	function convertDateFormatForDbase($suppliedDate, $format = "Y-m-d") {
         /* If we have any general setting in which we have defined the date format
           or in session then we can extract that here and pass the following funtion
-         */
+        */
 		 if((empty($suppliedDate) or $suppliedDate=='0000-00-00' or strlen($suppliedDate)<10)){
 			return false; 
 		}
@@ -227,7 +227,7 @@ class Utilities {
 			$suppliedDate = $dmystring[1]."-".$dmystring[0]."-".$dmystring[2];
 		}
 		if($suppliedDate!=''){
-			$suppliedDate = str_replace("-", "/", $suppliedDate);
+			//$suppliedDate = str_replace("-", "/", $suppliedDate);
 			if (!isset($suppliedDate) or $suppliedDate == "") {
 				$date = date("m-d-Y"); //put current date 
 			}

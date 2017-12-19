@@ -1,3 +1,8 @@
+
+<?php
+//print_r($getServiceData);die;
+?>
+
 <div class="container" style="margin-top: 50px;">
 	<div class="panel-heading">
 		<div class="row">
@@ -21,58 +26,32 @@
 						<th>Note</th>
 					</thead>
 					<tbody>
+					<?php
+						foreach($getServiceData as $serviceData){
+					?>
 						<tr>
-							<td>Mohsin Irshad</td>
-							<td>+913335586757</td>
-							<td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-							<td>15-Dec-2017</td>
+							<td><?php echo ucfirst($serviceData['name']);?></td>
+							<td><?php echo "+91 ".$serviceData['contact'];?></td>
+							<td><?php echo $serviceData['address'];?></td>
+							<td><?php echo date("d-M-Y",strtotime($serviceData['service_date']));?></td>
 							<td>
-								<p data-placement="top" data-toggle="tooltip" title="Edit">
-									<button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span>
+								<p title="Edit">
+									<button class="btn btn-primary btn-xs" onclick="editservic('<?php echo $serviceData['id']?>');">
+										<span class="glyphicon glyphicon-pencil"></span>
 									</button>
 								</p>
 							</td>
-							<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-						</tr>
-						<tr>
-							<td>Mohsin Irshad</td>
-							<td>+913335586757</td>
-							<td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-							<td>15-Dec-2017</td>
 							<td>
-								<p data-placement="top" data-toggle="tooltip" title="Edit">
-									<button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span>
+								<p title="Delete">
+									<button class="btn btn-danger btn-xs" onclick="deleteservic('<?php echo $serviceData['id']?>');">
+										<span class="glyphicon glyphicon-trash"></span>
 									</button>
 								</p>
 							</td>
-							<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 						</tr>
-						<tr>
-							<td>Mohsin Irshad</td>
-							<td>+913335586757</td>
-							<td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-							<td>15-Dec-2017</td>
-							<td>
-								<p data-placement="top" data-toggle="tooltip" title="Edit">
-									<button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span>
-									</button>
-								</p>
-							</td>
-							<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-						</tr>
-						<tr>
-							<td>Mohsin Irshad</td>
-							<td>+913335586757</td>
-							<td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-							<td>15-Dec-2017</td>
-							<td>
-								<p data-placement="top" data-toggle="tooltip" title="Edit">
-									<button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span>
-									</button>
-								</p>
-							</td>
-							<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-						</tr>
+					<?php
+						}
+					?>
 					</tbody>
 				</table>
 			</div>

@@ -13,11 +13,20 @@ class Home extends CI_Controller {
 		//$extraHead = "activateHeadMeanu('topsignin')";
 		//$this->layouts->set_extra_head($extraHead);
 		$this->layouts->set_title('Home');
+		
+		$data['getServiceData'] = $this->commonModel->getRecord('services','*',array(),array(),"","","array","1");
 		//$this->layouts->add_include('assets/js/main.js')->add_include('assets/css/coustom.css')->add_include('https://www.google.com/recaptcha/api.js',false);
-		$this->layouts->dbview('home/main_page');
+		$this->layouts->dbview('home/main_page',$data);
 	}
 	
 	public function openaddservice(){
-		echo $this->load->view('home/addpopup', "",true);
+		$data['getServiceData'] = "";
+		echo $this->load->view('home/addpopup',$data,true);
+	}
+	
+	public function editservice(){
+		$id=$this->input->post('id');
+		$data['getServiceData'] =  $this->commonModel->getRecord('services','*',array('id'=>$id),array(),"","","array","0");
+		echo $this->load->view('home/updatepopup',$data,true);
 	}
 }
