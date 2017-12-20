@@ -7,14 +7,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project Name</a>
+          <a class="navbar-brand" href="<?php echo base_url('/home');?>">Star Services</a>
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
+          <!--<ul class="nav navbar-nav">
             <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             <li><a href="#about"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
             <li><a href="#contact"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
-          </ul>
+          </ul>-->
         </div>
       </div>
 	</nav>

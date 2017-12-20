@@ -1,6 +1,4 @@
 $( document ).ready(function(){
-	
-	
 	$("#addNewSer").click(function(){
 		$.ajax({
 			type: "POST",

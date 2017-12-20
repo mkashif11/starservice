@@ -27,7 +27,11 @@
 		<script src="<?php echo base_url();?>assets/js/jquery/jquery-ui.js"></script>
 		<script type="text/javascript">
 			var base_url = '<?php echo base_url(); ?>';
+			var mobime=false;
 			(function(){
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+					mobime = true;
+				}
 				/* setInterval(
 				function(){
 					var uid = '<?php echo $this->utilities->getSessionUserData('uid');?>';

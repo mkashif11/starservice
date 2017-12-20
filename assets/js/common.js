@@ -67,19 +67,7 @@ String.prototype.ucfirst = function(){
     return this.charAt(0).toUpperCase() + this.substr(1);
 }
 
-$(function() {
-	$(window).scroll(function(e) {
-		var winwidth = $(window).width();
-		if(winwidth>779){
-			var height = $(window).scrollTop();
-			if(height  > 110) {
-				$( "#mainNave" ).css({'margin-top': 0});
-			}else{
-				$( "#mainNave" ).css({'margin-top': -60});
-			}
-		}
-	});
-	
+$(function() {	
 	$(".backup_picture").on("error", function(){
         $(this).attr('src', base_url+'assets/images/no_book avalaible.jpg');
     });
