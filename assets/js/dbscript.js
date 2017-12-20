@@ -38,8 +38,8 @@ function saveeservicepopup(){
 		return false;
 	}else{
 		$.ajax({
-			type: "PUT",
-			url: base_url+'api/api/service',
+			type: "POST",
+			url: base_url+'home/service',
 			data: {
 				name:$("#name").val(),
 				contact:$("#contact").val(),
@@ -47,12 +47,13 @@ function saveeservicepopup(){
 				address:$("#address").val()
 			},
 			success: function(msg){
-				if(msg.status=="success"){
+				var jsonObj = $.parseJSON(msg);
+				if(jsonObj.status=="success"){
 					closeservicepopup();
-					setUiMessege('suc',msg.msg);
+					setUiMessege('suc',jsonObj.msg);
 					window.location = base_url+"home";
 				}else{
-					setUiMessege('err',msg.msg);
+					setUiMessege('err',jsonObj.msg);
 				}
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -94,7 +95,7 @@ function updateservicepopup(id){
 	}else{
 		$.ajax({
 			type: "POST",
-			url: base_url+'api/api/updateservice',
+			url: base_url+'home/updateservice',
 			data: {
 				id:id,
 				name:$("#name").val(),
@@ -103,12 +104,13 @@ function updateservicepopup(id){
 				address:$("#address").val()
 			},
 			success: function(msg){
-				if(msg.status=="success"){
+				var jsonObj = $.parseJSON(msg);
+				if(jsonObj.status=="success"){
 					closeservicepopup();
-					setUiMessege('suc',msg.msg);
+					setUiMessege('suc',jsonObj.msg);
 					window.location = base_url+"home";
 				}else{
-					setUiMessege('err',msg.msg);
+					setUiMessege('err',jsonObj.msg);
 				}
 			},
 			error : function(XMLHttpRequest, textStatus, errorThrown) {

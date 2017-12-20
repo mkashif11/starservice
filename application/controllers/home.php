@@ -29,4 +29,38 @@ class Home extends CI_Controller {
 		$data['getServiceData'] =  $this->commonModel->getRecord('services','*',array('id'=>$id),array(),"","","array","0");
 		echo $this->load->view('home/updatepopup',$data,true);
 	}
+	
+	public function service() {
+		$putArr = Array();
+		$putArr['name'] = $this->input->post('name');
+		$putArr['contact'] = $this->input->post('contact');
+		$putArr['service_date'] = $this->utilities->convertDateFormatForDbase($this->input->post('sdate'));
+		$putArr['address'] = $this->input->post('address');
+		$putArr['added_by'] = $this->utilities->getSessionUserData('uid');
+		$putArr['date_modified'] = date("Y-m-d H:i:s");
+		
+		$up_res = $this->commonModel->insertRecord('services',$putArr);
+		if($up_res){
+			echo json_encode(array("status"=>"success","msg"=>"Service recorded successfully.","data"=>$up_res));
+		}else{
+			echo json_encode(array("status"=>"error","msg"=>"Service not recorded.","data"=>""));
+		}
+	}
+	
+	public function updateservice() {
+		$postArr = Array();
+		$postArr['name'] = $this->input->post('name');
+		$postArr['contact'] = $this->input->post('contact');
+		$postArr['service_date'] = $this->utilities->convertDateFormatForDbase($this->input->post('sdate'));
+		$postArr['address'] = $this->input->post('address');
+		$postArr['updated_by'] = $this->utilities->getSessionUserData('uid');
+		$postArr['date_modified'] = date("Y-m-d H:i:s");
+		
+		$up_res = $this->commonModel->updateRecord('services',$postArr,array("id"=>$this->input->post('id')));
+		if($up_res){
+			echo json_encode(array("status"=>"success","msg"=>"Service record update successfully.","data"=>$up_res));
+		}else{
+			echo json_encode(array("status"=>"error","msg"=>"Service not updated.","data"=>""));
+		}
+	}
 }

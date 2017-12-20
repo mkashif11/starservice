@@ -38,6 +38,6 @@ class Auths extends CI_Model {
 			return false;
 		}
 	}
-
+		
 }
 ?>
