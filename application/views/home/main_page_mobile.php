@@ -15,46 +15,20 @@
 	</div>
 	<div class="row">
         <div class="col-md-12">
-			<div class="table-responsive">   
-				<table id="mytable" class="table table-bordred table-striped">
-					<thead>
-						<th>Name</th>
-						<th>Contact</th>
-						<th>Address</th>
-						<th>Service date</th>
-						<th>Edit</th>
-						<th>Note</th>
-					</thead>
-					<tbody>
-					<?php
-						foreach($getServiceData as $serviceData){
-					?>
-						<tr>
-							<td><?php echo ucfirst($serviceData['name']);?></td>
-							<td><?php echo "+91 ".$serviceData['contact'];?></td>
-							<td><?php echo $serviceData['address'];?></td>
-							<td><?php echo date("d-M-Y",strtotime($serviceData['service_date']));?></td>
-							<td>
-								<p title="Edit">
-									<button class="btn btn-primary btn-xs" onclick="editservic('<?php echo $serviceData['id']?>');">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</button>
-								</p>
-							</td>
-							<td>
-								<p title="Delete">
-									<button class="btn btn-danger btn-xs" onclick="deleteservic('<?php echo $serviceData['id']?>');">
-										<span class="glyphicon glyphicon-trash"></span>
-									</button>
-								</p>
-							</td>
-						</tr>
-					<?php
-						}
-					?>
-					</tbody>
-				</table>
+		<?php
+			foreach($getServiceData as $serviceData){
+		?>
+			<div class="card">
+				<h3 class="card-header"><?php echo ucfirst($serviceData['name']);?></h3>
+				<div class="card-block">
+					<h4 class="card-title"><?php echo "+91 ".$serviceData['contact'];?></h4>
+					<p class="card-text"><?php echo date("d-M-Y",strtotime($serviceData['service_date']));?></p>
+					<p class="card-text"><?php echo $serviceData['address'];?></p>
+				</div>
 			</div>
+		<?php
+			}
+		?>
         </div>
 	</div>
 </div>

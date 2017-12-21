@@ -33,7 +33,6 @@ footer {
 
 }
 
-
 .input-group{
 	margin: 20px 0px;
 }
@@ -47,7 +46,6 @@ footer {
     
 }
 
-
 .form-header{
     max-width: 500px;
     margin: 0 auto;
@@ -58,6 +56,44 @@ footer {
     border-top-right-radius:10px ;
     border-top-left-radius:10px 
 }
+
 .remember{
     color: black;
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+.card-block {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card-title {
+    margin-bottom: .75rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }

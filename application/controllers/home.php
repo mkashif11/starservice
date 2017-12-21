@@ -16,7 +16,7 @@ class Home extends CI_Controller {
 		
 		$data['getServiceData'] = $this->commonModel->getRecord('services','*',array(),array(),"","","array","1");
 		//$this->layouts->add_include('assets/js/main.js')->add_include('assets/css/coustom.css')->add_include('https://www.google.com/recaptcha/api.js',false);
-		if(isMobile()){
+		if($this->isMobile()){
 			$this->layouts->dbview('home/main_page_mobile',$data);
 		}else{
 			$this->layouts->dbview('home/main_page',$data);
@@ -68,7 +68,7 @@ class Home extends CI_Controller {
 			echo json_encode(array("status"=>"error","msg"=>"Service not updated.","data"=>""));
 		}
 	}
-	function isMobile() {
+	public function isMobile() {
 		return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 	}
 }
