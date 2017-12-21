@@ -10,7 +10,19 @@
 				<a class="btn btn-lg btn-success" href="javascript:void(0);" id="addNewSer">
 					<i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Service
 				</a>
+				<div class="dropdown" style="float: right;margin-top: 5px;">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Date
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">Today</a></li>
+						<li><a href="#">Yesterday</a></li>
+						<li><a href="#">Tomorrow</a></li>
+						<li><a href="#">This week</a></li>
+					</ul>
+				</div>
 			</nav>
+			
 		</div>
 	</div>
 	<div class="row">
@@ -27,6 +39,7 @@
 					</thead>
 					<tbody>
 					<?php
+					if($getServiceData){
 						foreach($getServiceData as $serviceData){
 					?>
 						<tr>
@@ -51,6 +64,7 @@
 						</tr>
 					<?php
 						}
+					}
 					?>
 					</tbody>
 				</table>

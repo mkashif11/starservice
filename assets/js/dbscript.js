@@ -118,6 +118,38 @@ function updateservicepopup(id){
 	}
 }
 
-
+function deleteservic(id){	
+	swal({
+	  title: "Are you sure?",
+	  text: "Do you want to delete this service!",
+	  type: "warning",
+	  showCancelButton: true,
+	  confirmButtonColor: "#DD6B55",
+	  confirmButtonText: "Yes, delete it!",
+	  closeOnConfirm: false
+	},
+	function(){
+		$.ajax({
+			type: "POST",
+			url: base_url+'home/deleteservic',
+			data: {
+				id:id
+			},
+			success: function(msg){
+				var jsonObj = $.parseJSON(msg);
+				if(jsonObj.status=="success"){
+					setUiMessege('suc',jsonObj.msg);
+					swal("Deleted!", "Service has been deleted.", "success");
+					window.location = base_url+"home";
+				}else{
+					setUiMessege('err',jsonObj.msg);
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				setUiMessege('err',errorThrown);
+			}
+		});
+	});
+}
 
 

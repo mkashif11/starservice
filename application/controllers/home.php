@@ -14,7 +14,7 @@ class Home extends CI_Controller {
 		//$this->layouts->set_extra_head($extraHead);
 		$this->layouts->set_title('Home');
 		
-		$data['getServiceData'] = $this->commonModel->getRecord('services','*',array(),array(),"","","array","1");
+		$data['getServiceData'] = $this->commonModel->getRecord('services','*',array("service_date"=>Date("Y-m-d")),array(),"","","array","1");
 		//$this->layouts->add_include('assets/js/main.js')->add_include('assets/css/coustom.css')->add_include('https://www.google.com/recaptcha/api.js',false);
 		if($this->isMobile()){
 			$this->layouts->dbview('home/main_page_mobile',$data);
@@ -68,6 +68,16 @@ class Home extends CI_Controller {
 			echo json_encode(array("status"=>"error","msg"=>"Service not updated.","data"=>""));
 		}
 	}
+	
+	public function deleteservic(){
+		$dl_res = $this->commonModel->deleteRecord('services',array("id"=>$this->input->post('id')));
+		if($dl_res){
+			echo json_encode(array("status"=>"success","msg"=>"Service record delete successfully.","data"=>$dl_res));
+		}else{
+			echo json_encode(array("status"=>"success","msg"=>"Delete failed.","data"=>$dl_res));
+		}
+	}
+	
 	public function isMobile() {
 		return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 	}
