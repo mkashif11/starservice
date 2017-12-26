@@ -6,7 +6,7 @@ $( document ).ready(function(){
 			data: {},
 			success: function(msg){
 				$("body").append(msg);
-				$("#sdate").datepicker({
+				$("#sdate,#purchasedate").datepicker({
 					changeMonth: true,
 					changeYear: true,
 					dateFormat:'dd-mm-yy'
@@ -29,8 +29,14 @@ function saveeservicepopup(){
 	var validateArray = Array();
 		validateArray.push("name");
 		validateArray.push("contact");
-		validateArray.push("sdate");
 		validateArray.push("address");
+		validateArray.push("productcat");
+		validateArray.push("productdetails");
+		validateArray.push("purchasedate");
+		validateArray.push("noofservice");
+		if($("#noofservice").val() >0){
+			validateArray.push("sdate");
+		}
 
 	if(validateinput(validateArray)){
 		return false;
@@ -41,8 +47,14 @@ function saveeservicepopup(){
 			data: {
 				name:$("#name").val(),
 				contact:$("#contact").val(),
+				address:$("#address").val(),
+				productcat:$("#productcat").val(),
+				productdetails:$("#productdetails").val(),
+				purchasedate:$("#purchasedate").val(),
+				noofservice:$("#noofservice").val(),
+				serDuration:$("#serDuration").val(),
 				sdate:$("#sdate").val(),
-				address:$("#address").val()
+				notes:$("#notes").val()
 			},
 			success: function(msg){
 				var jsonObj = $.parseJSON(msg);
